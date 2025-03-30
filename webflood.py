@@ -31,7 +31,7 @@ def attack():
     while True:
         if time.time() <= timeout:
             data = {
-                'email': id_generator(random.randint(3,10))+"@"+id_generator(random.randint(3,10))+".com",
+                'email': id_generator(random.randint(3,10))+"@"+random.choice(['gmail', 'yahoo'])+".com",
                 'password': id_generator(random.randint(3,10)),
             }
             headers = {
