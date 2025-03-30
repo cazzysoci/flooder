@@ -41,7 +41,11 @@ def attack():
             req = urllib2.Request(url="",
                                   data=urllib.urlencode(data),
                                   headers=headers)
-            response = urllib2.urlopen(req)
+            try:
+                response = urllib2.urlopen(req)
+                print("Status code: " + str(response.getcode()))
+            except urllib2.HTTPError as e:
+                print("Error code: " + str(e.code))
             the_page = response.read()
             print('flooded with ' + str(data))
         else:
