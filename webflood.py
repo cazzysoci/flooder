@@ -35,7 +35,7 @@ def attack():
                 'password': id_generator(random.randint(3,10)),
             }
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36',
                 'X-Forwarded-For': '.'.join(str(random.randint(0, 255)) for _ in range(4))
             }
             req = urllib2.Request(url="",
